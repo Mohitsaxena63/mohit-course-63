@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MohitCodes - Responsive Header</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Fix for toggler icon */
+    .navbar-toggler {
+      border: none;
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0,0,0,0.5)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+  </style>
+</head>
+<body>
+  
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white shadow-sm">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand fw-bold" href="#">
+      <i class="fa-solid fa-code"></i> MohitCodes <i class="fa-solid fa-heart text-danger"></i>
+    </a>
+
+    <!-- Toggle button (Right Sidebar) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Offcanvas Sidebar -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title"><i class="fa-solid fa-code"></i> MohitCodes</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-home"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-graduation-cap"></i> Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-book"></i> Tutorials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-blog"></i> Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-file"></i> Notes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-envelope"></i> Contact</a></li>
+        </ul>
+
+        <!-- Search box -->
+        <form class="d-flex my-3" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search...">
+        </form>
+
+        <!-- Buttons -->
+        <a href="#" class="btn btn-primary me-2 w-100 mb-2"><i class="fa fa-sign-in-alt"></i> Login</a>
+        <a href="#" class="btn btn-outline-secondary w-100"><i class="fa fa-user-plus"></i> Signup</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- Navbar End -->
+
+<!-- Courses Section -->
+<section class="container py-5" id="courses">
+  <h2 class="text-center mb-5"> Our Popular Courses</h2>
+  <div class="row g-4">
+    
+    <!-- Course 1 -->
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card h-100 shadow-sm">
+        <img src="https://i.pinimg.com/564x/8a/69/1f/8a691f82c76ab844029e8dfb68fcd202.jpg" class="card-img-top" alt="Python data Basics">
+        <div class="card-body text-center">
+          <h5 class="card-title">Python Data Basics</h5>
+          <p class="card-text">Learn the foundation of web development with Python.</p>
+          <p><del>₹4699</del> <strong>₹999</strong></p>
+          <button class="btn btn-primary buyBtn w-100" data-course="Python Data Basics" data-price="999">Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course 2 -->
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card h-100 shadow-sm">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDGNLJF-ZAqKjYCXy-VrzTwLKo5d-kr3OjiQ&s" class="card-img-top" alt="Python Mastery">
+        <div class="card-body text-center">
+          <h5 class="card-title">Python Mastery</h5>
+          <p class="card-text">Master advanced Python for data and automation.</p>
+          <p><del>₹6999</del> <strong>₹4699</strong></p>
+          <button class="btn btn-primary buyBtn w-100" data-course="Python Mastery" data-price="4699">Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Buy Modal -->
+<div class="modal fade" id="buyModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Complete Your Purchase</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <h6 id="courseName"></h6>
+        <p id="coursePrice"></p>
+        <p>Select Payment Option:</p>
+        <button class="btn btn-success w-100 mb-2" id="razorpayBtn"><i class="fa fa-credit-card"></i> Pay with Razorpay (India)</button>
+        <div id="paypal-button-container"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer Section -->
+<footer class="bg-light text-dark pt-5 pb-3 mt-5">
+  <div class="container">
+    <div class="row">
+      <!-- Main -->
+      <div class="col-md-3 col-6 mb-3">
+        <h6 class="fw-bold">Main</h6>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-dark text-decoration-none">Home</a></li>
+          <li><a href="#" class="text-dark text-decoration-none">Contact</a></li>
+          <li><a href="#" class="text-dark text-decoration-none">Work With Us</a></li>
+          <li><a href="#" class="text-dark text-decoration-none">My Gear</a></li>
+        </ul>
+      </div>
+
+      <!-- Learn -->
+      <div class="col-md-3 col-6 mb-3">
+        <h6 class="fw-bold">Learn</h6>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-dark text-decoration-none">Courses</a></li>
+          <li><a href="#" class="text-dark text-decoration-none">Tutorials</a></li>
+          <li><a href="#" class="text-dark text-decoration-none">Notes</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div class="col-md-3 col-6 mb-3">
+        <h6 class="fw-bold">Legal</h6>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-dark text-decoration-none">Terms</a></li>
+          <li><a href="#" class="text-dark text-decoration-none">Privacy</a></li>
+          <li><a href="#" class="text-dark text-decoration-none">Refund</a></li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div class="col-md-3 col-6 mb-3">
+        <h6 class="fw-bold">Social</h6>
+        <ul class="list-unstyled d-flex flex-column gap-2">
+          <li><a href="https://github.com/" target="_blank" class="text-dark text-decoration-none"><i class="fab fa-github me-2"></i>GitHub</a></li>
+          <li><a href="https://twitter.com/" target="_blank" class="text-dark text-decoration-none"><i class="fab fa-twitter me-2"></i>Twitter (X)</a></li>
+          <li><a href="https://youtube.com/" target="_blank" class="text-dark text-decoration-none"><i class="fab fa-youtube me-2"></i>YouTube</a></li>
+          <li><a href="https://facebook.com/" target="_blank" class="text-dark text-decoration-none"><i class="fab fa-facebook me-2"></i>Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom text -->
+    <div class="text-center mt-4">
+      <p class="mb-0">Made With <span class="text-danger">❤️</span> by Mohit Codes</p>
+    </div>
+  </div>
+</footer>
+
+<!-- FontAwesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" crossorigin="anonymous"></script>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+
+<script>
+  let selectedCourse = "";
+  let selectedPrice = 0;
+
+  document.querySelectorAll(".buyBtn").forEach(btn => {
+    btn.addEventListener("click", function() {
+      selectedCourse = this.dataset.course;
+      selectedPrice = this.dataset.price;
+      document.getElementById("courseName").innerText = selectedCourse;
+      document.getElementById("coursePrice").innerText = "Price: ₹" + selectedPrice;
+
+      let modal = new bootstrap.Modal(document.getElementById("buyModal"));
+      modal.show();
+
+      // Render PayPal
+      document.getElementById("paypal-button-container").innerHTML = "";
+      paypal.Buttons({
+        createOrder: (data, actions) => {
+          return actions.order.create({
+            purchase_units: [{ amount: { value: (selectedPrice/83).toFixed(2) } }]
+          });
+        },
+        onApprove: (data, actions) => {
+          return actions.order.capture().then(details => {
+            alert("Payment Successful by " + details.payer.name.given_name);
+          });
+        }
+      }).render('#paypal-button-container');
+    });
+  });
+
+  // Razorpay
+  document.getElementById("razorpayBtn").addEventListener("click", function() {
+    let options = {
+      "key": "rzp_test_1234567890", 
+      "amount": selectedPrice * 100,
+      "currency": "INR",
+      "name": "MohitCodes",
+      "description": selectedCourse,
+      "handler": function (response){
+        alert("Payment Successful. Payment ID: " + response.razorpay_payment_id);
+      }
+    };
+    let rzp = new Razorpay(options);
+    rzp.open();
+  });
+</script>
+
+</body>
+</html>
